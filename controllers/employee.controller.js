@@ -76,4 +76,15 @@ connection.query("update employee set designation='"+designation+"',email='"+ema
 })
 })
 
+router.delete("/:id",(req,res)=>{
+    connection.query("delete from employee where id ="+req.params.id,(err,records,fields)=>{
+        if(err)
+        {
+            console.log("Error deleting employee with id"+req.params.id);
+        }
+        else{
+            res.send("EMPLOYEE WITH ID "+req.params.id+" DELETED")
+        }
+    })
+})
 module.exports=router;
